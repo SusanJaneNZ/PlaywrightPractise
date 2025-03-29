@@ -17,7 +17,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 export default defineConfig({
   // globalSetup: './global-setup.ts',
-  testDir: './tests/lambda',
+  testDir: './tests/lambdaPractise',
   // testMatch: 'lambda/*.test.ts',
   // testMatch: '**/addToCart.test.ts',
   /* Run tests in files in parallel */
