@@ -1,0 +1,21 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.9"
+  },
+  "scripts": {
+    "test": "npx playwright test  --project=chromium",
+    "lambda-test": "npx playwright test  --project=\"chrome:latest:Windows 11@lambdatest\"",
+    "test-repeat": "npx playwright test ./tests/lambda/addToCart.test.ts --repeat-each 15"
+},
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
