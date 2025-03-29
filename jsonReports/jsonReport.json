@@ -1,7 +1,7 @@
 {
   "config": {
     "configFile": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\playwright.config.ts",
-    "rootDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambda",
+    "rootDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambdaPractise",
     "forbidOnly": false,
     "fullyParallel": true,
     "globalSetup": null,
@@ -49,7 +49,7 @@
         },
         "id": "chrome:latest:MacOS Ventura@lambdatest",
         "name": "chrome:latest:MacOS Ventura@lambdatest",
-        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambda",
+        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambdaPractise",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -65,7 +65,7 @@
         },
         "id": "chrome:latest:Windows 11@lambdatest",
         "name": "chrome:latest:Windows 11@lambdatest",
-        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambda",
+        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambdaPractise",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -81,7 +81,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambda",
+        "testDir": "C:/Users/susan/playwright/PlaywrightPractise/tests/lambdaPractise",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -91,84 +91,49 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "patch",
+    "updateSourceMethod": "3way",
     "version": "1.51.1",
-    "workers": 8,
+    "workers": 1,
     "webServer": null
   },
   "suites": [
     {
-      "title": "tabs.test.ts",
-      "file": "tabs.test.ts",
+      "title": "addToCart.test.ts",
+      "file": "addToCart.test.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Two Popups",
+          "title": "Add camera to Cart",
           "ok": true,
-          "tags": [
-            "lambdatest"
-          ],
+          "tags": [],
           "tests": [
             {
               "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
-              "projectId": "chrome:latest:Windows 11@lambdatest",
-              "projectName": "chrome:latest:Windows 11@lambdatest",
+              "projectId": "chromium",
+              "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 7,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9379,
+                  "duration": 24460,
                   "errors": [],
                   "stdout": [
                     {
-                      "text": "New Window URL: https://www.lambdatest.com/selenium-playground/window-popup-modal-demo\n"
-                    },
-                    {
-                      "text": "New Window URL: https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Flambdatest%2F\n"
-                    },
-                    {
-                      "text": "New Window URL: https://x.com/intent/follow?screen_name=Lambdatesting\n"
-                    },
-                    {
-                      "text": "Facebook URL: https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Flambdatest%2F\n"
-                    },
-                    {
-                      "text": "Twitter URL: https://x.com/intent/follow?screen_name=Lambdatesting\n"
-                    },
-                    {
-                      "text": "Popup Title: Log into Facebook\n"
-                    },
-                    {
-                      "text": "Popup Title: LambdaTest (@lambdatesting) / X\n"
+                      "text": "Number of items in cart before update: 8 after: 7\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-03-29T00:56:47.077Z",
+                  "startTime": "2025-03-29T04:32:05.749Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\test-results\\tabs-Two-Popups-chrome-latest-Windows-11-lambdatest\\test-finished-1.png"
-                    },
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\test-results\\tabs-Two-Popups-chrome-latest-Windows-11-lambdatest\\test-finished-3.png"
-                    },
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\test-results\\tabs-Two-Popups-chrome-latest-Windows-11-lambdatest\\test-finished-4.png"
-                    },
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\test-results\\tabs-Two-Popups-chrome-latest-Windows-11-lambdatest\\test-finished-2.png"
+                      "path": "C:\\Users\\susan\\playwright\\PlaywrightPractise\\test-results\\addToCart-Add-camera-to-Cart-chromium\\test-finished-1.png"
                     }
                   ]
                 }
@@ -176,9 +141,9 @@
               "status": "expected"
             }
           ],
-          "id": "90092c161e9e092ba181-462a7234b13267c35c33",
-          "file": "tabs.test.ts",
-          "line": 44,
+          "id": "7fd058b15c0ca70151c1-63176568ba5a749f4134",
+          "file": "addToCart.test.ts",
+          "line": 10,
           "column": 6
         }
       ]
@@ -186,8 +151,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-03-29T00:56:44.955Z",
-    "duration": 27039.974000000002,
+    "startTime": "2025-03-29T04:32:01.807Z",
+    "duration": 28539.997000000207,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

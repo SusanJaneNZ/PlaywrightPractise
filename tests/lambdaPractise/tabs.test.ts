@@ -41,7 +41,7 @@ test('One Popup', async ({ page }) => {
 
 })
 
-test.only('Two Popups', async ({ page }) => {
+test('Two Popups', async ({ page }) => {
 
     await page.goto('https://www.lambdatest.com/selenium-playground/window-popup-modal-demo');
 
