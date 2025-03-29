@@ -7,7 +7,7 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.login(registrationData.email, registrationData.password);
 });
 
-test.only("Add camera to Cart", async ({ page, homePage }) => {
+test("Add camera to Cart", async ({ page, homePage }) => {
   const cameraIndex = 2;
   await homePage.shopByCategoryLink.click();
   await homePage.camerasLink.click();
