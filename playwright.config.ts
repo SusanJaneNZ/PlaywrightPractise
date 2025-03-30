@@ -17,9 +17,10 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 export default defineConfig({
   // globalSetup: './global-setup.ts',
-  testDir: './tests/svgomg',
+  testDir: './tests',
   // testMatch: 'lambda/*.test.ts',
   // testMatch: '**/addToCart.test.ts',
+  testMatch: '**/*.test.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

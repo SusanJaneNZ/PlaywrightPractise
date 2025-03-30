@@ -142,16 +142,15 @@ test.describe('SVGOMG - Demo Page', () => {
         page.getByRole('link', { name: 'Download' }).click();
         const download = await downloadEvent;
 
-    
-          const filename = './downloads/' + download.suggestedFilename()
-          await download.saveAs( filename)
-          console.log(filename)
-        
-          const contents = await fs.promises.readFile(filename);
 
+        const filename = './downloads/' + download.suggestedFilename()
+        await download.saveAs(filename)
+        console.log(filename)
 
-        expect(contents).toContain(/^<svg/);
+        const contents = await fs.promises.readFile(filename);
 
+        console.log(contents.toString())
+        expect(contents.toString()).toContain('<svg')
 
     })
 
