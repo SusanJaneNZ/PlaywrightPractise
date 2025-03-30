@@ -79,7 +79,7 @@ const myTest = base.extend<myFixtures>({
         // Run tests in local in case of local config provided
         await use(page);
       }
-    },{timeout: 30000}],
+    },{scope: "test", timeout: 30000}],
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
