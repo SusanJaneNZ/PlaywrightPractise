@@ -87,8 +87,8 @@ test.describe('SVGOMG - Demo Page', () => {
 
 
         (await menuFeaturesLocator.allInnerTexts()).forEach(async (featureText: string, index) => {
-            console.log(`Feature: ${featureText}`);
-            console.log(`Index: ${index}`);
+            // console.log(`Feature: ${featureText}`);
+            // console.log(`Index: ${index}`);
             if (enabledFeatures.includes(featureText)) {
                 await expect(menuFeaturesLocator.nth(index).getByRole('checkbox')).toBeChecked();
             } else if (disabledFeatures.includes(featureText)) {
@@ -138,18 +138,23 @@ test.describe('SVGOMG - Demo Page', () => {
 
     test('download result', async ({ page }) => {
 
+        const loadCarApi = 'svgomg/js/gzip-worker.js'
+        const loadCarApiReponse = page.waitForResponse(resp => resp.url().includes(loadCarApi) && resp.status() === 200);
+        await loadCarApiReponse;
+
         const downloadEvent = page.waitForEvent('download');
         page.getByRole('link', { name: 'Download' }).click();
         const download = await downloadEvent;
 
 
         const filename = './downloads/' + download.suggestedFilename()
+
         await download.saveAs(filename)
-        console.log(filename)
+        // console.log(filename)
 
         const contents = await fs.promises.readFile(filename);
 
-        console.log(contents.toString())
+        // console.log(contents.toString())
         expect(contents.toString()).toContain('<svg')
 
     })
