@@ -1,5 +1,5 @@
-// import { test, expect } from "../../fixtures/myFixtures.ts";
-import { test, expect } from '@playwright/test';
+import { test, expect } from "../../fixtures/myFixtures.ts";
+// import { test, expect } from '@playwright/test';
 import * as fs from 'fs';
 
 test.use({
@@ -26,6 +26,31 @@ test('SVGOMG - Main Page', async ({ page }) => {
         'Paste markup',
         'Demo',
         'Contribute']);
+})
+
+test('SVGOMG - Open SVG', async ({ page }) => {
+    const uploadButton = page.getByRole('button', { name: 'Open SVG' });
+
+    const frame = page.frameLocator('iframe[title="Loaded SVG file"]');
+    await expect(frame.getByRole('img')).not.toBeVisible();
+
+    const uploadEvent = page.waitForEvent('filechooser');
+    uploadButton.click();
+
+    const fileChooser = await uploadEvent;
+    await fileChooser.setFiles(['./downloads/cat-5-svgrepo-com.svg']);
+
+    //wait for upload
+    const loadImageApi = 'svgomg/js/gzip-worker.js'
+    const loadImageApiReponse = page.waitForResponse(resp => resp.url().includes(loadImageApi) && resp.status() === 200);
+    await loadImageApiReponse;
+
+    //check frame has image loaded
+    await expect(frame.getByRole('img')).toBeVisible();
+
+    //check markup loaded
+    await page.locator('label', {hasText: /Markup$/}).click();
+    expect(page.locator('code', {hasText: /svg/})).toBeVisible();
 })
 
 test.describe('SVGOMG - Demo Page', () => {
