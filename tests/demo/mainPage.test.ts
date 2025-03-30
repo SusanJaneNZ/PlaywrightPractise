@@ -50,7 +50,7 @@ test('SVGOMG - Open SVG', async ({ page }) => {
 
     //check markup loaded
     await page.locator('label', {hasText: /Markup$/}).click();
-    expect(page.locator('code', {hasText: /svg/})).toBeVisible();
+    await expect(page.locator('code', {hasText: /svg/})).toBeVisible();
 })
 
 test.describe('SVGOMG - Demo Page', () => {
