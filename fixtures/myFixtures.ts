@@ -59,7 +59,7 @@ const myTest = base.extend<myFixtures>({
           wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities)
           )}`,
-        timeout: 90000});
+        timeout: 120000});
 
         const ltPage = await browser.newPage(testInfo.project.use);
         await use(ltPage);
