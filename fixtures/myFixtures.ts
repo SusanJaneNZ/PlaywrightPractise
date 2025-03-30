@@ -46,7 +46,7 @@ const modifyCapabilities = (configName, testName) => {
 };
 
 const myTest = base.extend<myFixtures>({
-    page: [async ({ page }, use, testInfo) => {
+    page: async ({ page }, use, testInfo) => {
       // Configure LambdaTest platform for cross-browser testing
       let fileName = testInfo.file.split(path.sep).pop();
       if (testInfo.project.name.match(/lambdatest/)) {
@@ -59,7 +59,7 @@ const myTest = base.extend<myFixtures>({
           wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities)
           )}`,
-        });
+        timeout: 90000});
 
         const ltPage = await browser.newPage(testInfo.project.use);
         await use(ltPage);
@@ -79,7 +79,7 @@ const myTest = base.extend<myFixtures>({
         // Run tests in local in case of local config provided
         await use(page);
       }
-    },{scope: "test", timeout: 30000}],
+    },
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
