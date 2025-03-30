@@ -7,6 +7,8 @@ require("dotenv").config({ path:  "./../.env" });
 type myFixtures = {
   loginPage: LoginPage;
   homePage: HomePage;
+  exceptionLogger: void;
+  timeLogger: void;
 };
 
 const capabilities = {
@@ -86,6 +88,36 @@ const myTest = base.extend<myFixtures>({
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
   },
+  exceptionLogger: [async ({}, use, testInfo) => {
+    const errors: Error[] = [];
+    process.on("pageerror", (error) => {
+      errors.push(error);
+    });
+    await use();
+    if (errors.length) {
+      await testInfo.attach("Page Errors", {
+        body: errors.map((error) => '${error.message\n ${error.stack}')
+        .join("\n---------\n"),
+      });
+
+      throw new Error("Javascript Page errors occurred during the test run.");
+    }
+  },{auto: true}],
+  timeLogger: [async ({}, use, testInfo) => {
+    testInfo.annotations.push({
+      type:  "Start",
+      description: new Date().toLocaleString("en-NZ", {
+        timeZone: "Pacific/Auckland",
+      }),
+    })
+    await use();
+    testInfo.annotations.push({
+      type: "End",
+      description: new Date().toLocaleString("en-NZ", {
+        timeZone: "Pacific/Auckland",
+      }),
+    })
+  },{auto: true}],
 });
 
 export const test = myTest;
