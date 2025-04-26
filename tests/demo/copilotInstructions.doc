@@ -1,0 +1,9 @@
+
+write a playwright test for #file:.downloads/library-ebook.html
+
+Navigate to https://wcl.overdrive.com/
+Sign In using C6316475 and 9862
+Search for a book called  Thursday Murder Club
+Check the book comes back
+Check the author is Richard Osman
+If Borrow is available click it and Borrow the book for 14 days else, else click Place a Hold

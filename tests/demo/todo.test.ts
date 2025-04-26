@@ -40,7 +40,7 @@ test.describe('Edit todos', () => {
         const firstItem = page.getByRole('listitem').first();
         await firstItem.dblclick();
 
-        await firstItem.getByRole('textbox', { name: "Edit" }).fill('make breakafast');
+        await firstItem.getByRole('textbox', { name: "Edit" }).fill('make breakfast');
         await firstItem.press('Escape');
 
         await expect(firstItem).toHaveText('Make dinner');
@@ -116,7 +116,7 @@ test.describe('Multiple todos', () => {
     
     })
 
-    test('Check todo fiters', async ({ page }) => {
+    test('Check todo filters', async ({ page }) => {
         await expect(page.getByRole('link', { name: 'All' })).toBeVisible();
         await expect(page.getByRole('link', { name: 'All' })).toHaveClass(/selected/);
         await expect(page.getByRole('link', { name: 'Active' })).toBeVisible();
@@ -142,6 +142,16 @@ test.describe('Multiple todos', () => {
         await (clearCompleted).click();
 
         await expect(todoItems).toHaveCount(2);
+    })
+
+    test('Mark All As Complete', async ({ page }) => {
+        const markAllAsComplete = page.getByRole('checkbox', {name: 'Mark all as complete'});
+        await markAllAsComplete.click();
+        //check all listitems have class .completed
+        const todoItems = page.locator('.todo-list li');
+        await expect(todoItems).toHaveCount(3);
+        await expect(todoItems).toHaveClass(/completed/);
+        await expect(page.getByTestId('todo-count')).toHaveText('0 items left');
     })
 
 })
